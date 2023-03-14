@@ -6,8 +6,8 @@ import CurrentLoc from "./CurrentLoc";
 import Mode from "./SelectDrive";
 import axios from "axios";
 
-import io from "socket.io-client";
-const socket = io.connect("http://localhost:3000");
+// import io from "socket.io-client";
+// const socket = io.connect("http://localhost:3000");
 
 function Input({ render, currentLocation, setFeatures, setLocations }) {
   // console.log("in input",currentLocation)
@@ -50,27 +50,27 @@ function Input({ render, currentLocation, setFeatures, setLocations }) {
   //   console.log('connected in frontend');
   // })
 
-  useEffect(() => {
-    socket.on('all-loc', (data) => {
+//   useEffect(() => {
+//     socket.on('all-loc', (data) => {
 
-      setDrivers(prev => {
+//       setDrivers(prev => {
 
-        prev.forEach(element => {
-          if (element.id === data.id) {
-            prev.splice(prev.indexOf(element), 1);
-          }
-        });
+//         prev.forEach(element => {
+//           if (element.id === data.id) {
+//             prev.splice(prev.indexOf(element), 1);
+//           }
+//         });
 
-      return [...prev,data]
-    });
+//       return [...prev,data]
+//     });
   
-      // setLocations(drivers)
-    });
-  },[socket])
+//       // setLocations(drivers)
+//     });
+//   },[socket])
 
-  useEffect(() => {console.log(drivers)
-    setLocations(drivers)
-  },[drivers])
+//   useEffect(() => {console.log(drivers)
+//     setLocations(drivers)
+//   },[drivers])
 
   useEffect(() => {
     setValues({
@@ -82,9 +82,9 @@ function Input({ render, currentLocation, setFeatures, setLocations }) {
     // postData("http://localhost:3000/")
 
     // eslint-disable-next-line no-unused-expressions
-    currentLocation
-      ? socket.emit("SH-CO", { id: socket.id, pos : currentLocation })
-      : null;
+//     currentLocation
+//       ? socket.emit("SH-CO", { id: socket.id, pos : currentLocation })
+//       : null;
     
   }, [currentLocation]);
 
